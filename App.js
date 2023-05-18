@@ -9,7 +9,7 @@ app.use("/",router)
 app.use(express.static(path.join(__dirname,"./frontend/dist")))
 
 app.get("*",(req,res)=>{
-    res.send(path.join(__dirname,"./frontend/dist/index.html"))
+    res.sendFile(path.join(__dirname,"./frontend/dist/index.html"))
 })
 
 app.listen(port,()=>{console.log(` server is running on this port ${port}`)})
