@@ -6,12 +6,14 @@ const path = require("path")
 
 require("./Database/mongooseConnect")
 
-app.use("/api",router)
+app.use("/",router)
 app.use(express.static(path.join(__dirname,"../frontend/dist")))
 
 app.get("*",(req,res)=>{
+    const fullPath = path.join(__dirname + '../frontend/dist/index.html');
     res.sendFile(path.join(__dirname,"../frontend/dist/index.html"))
-    console.log(__dirname)
+    console.log(fullPath)
+
 })
 
 app.listen(port,()=>{console.log(` server is running on this port ${port}`)})
